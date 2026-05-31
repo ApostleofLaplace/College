@@ -120,11 +120,6 @@ for idx, (y_dl, y_pl) in enumerate(zip(dispersive_components, polar_components))
 wb.save(output_path)
 print(f"\n✓ Results saved to: {output_path}")
 
-
-# ============================================================================
-# PART 5: CALCULATE PE SURFACE ENERGY (OPTIONAL)
-# ============================================================================
-
 glass_row_idx = None
 for idx, row in xcel_data.iterrows():
     if row.get('material', '').lower() == 'glass':
@@ -145,12 +140,6 @@ if glass_row_idx is not None:
 else:
     print("\nPart 5: Glass data not found")
 
-
-# ============================================================================
-# PART 6: ZISMAN PLOT FOR POLYETHYLENE (OPTIONAL)
-# ============================================================================
-
-print("\n=== PART 6: Zisman Plot ===")
 
 surface_tensions = []
 cos_theta_pe = []
@@ -175,11 +164,9 @@ if surface_tensions:
     if slope != 0:
         gamma_c = (1 - intercept) / slope
         print(f"Critical Surface Tension (γc) for PE: {gamma_c:.2f} mN/m")
-    
-    print("Zisman plot code added - uncomment below to visualize:")
-    print("""
+
     import matplotlib.pyplot as plt
-    
+
     plt.figure(figsize=(10, 6))
     plt.plot(surface_tensions, cos_theta_pe, 'bo-', label='PE data')
     x_fit = np.linspace(min(surface_tensions)-5, max(surface_tensions)+5, 100)
@@ -193,6 +180,7 @@ if surface_tensions:
     plt.legend()
     plt.grid(True, alpha=0.3)
     plt.show()
-    """)
+
+
 else:
     print("No polyethylene contact angle data found for Zisman plot")
