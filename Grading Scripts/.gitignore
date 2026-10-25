@@ -1,0 +1,10 @@
+# Real student names must never be committed. Only the placeholder roster
+# (Student 1, Student 2, ...) is tracked; the gradebook workbook, the TA's
+# filled-in input sheets and graded output stay local.
+*.xlsx
+*.xlsm
+*.xls
+*_input.csv
+*_graded.*
+private/
+__pycache__/
